@@ -1,0 +1,19 @@
+{
+  "name": "tim-reten",
+  "version": "1.0.0",
+  "description": "Teste para a LP de Tim Retenção com multiplos leads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run"
+  },
+  "author": "Giovanna Moretti",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.17.4",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}
