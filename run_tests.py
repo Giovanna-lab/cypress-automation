@@ -1,15 +1,32 @@
 import os
 from multiprocessing import Pool
+import subprocess
 
 def run_test(index):
-    os.system(f'npm run cy:run --spec cypress/e2e/home.cy.js --env leadIndex={index}')
+    # Run the Cypress test with a specific lead index
+    result = subprocess.run(
+        f'npm run cy:run --spec cypress/e2e/home.cy.js --env leadIndex={index}', 
+        shell=True, 
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE
+    )
+    
+    # Check if the test ran successfully or if there was an error
+    if result.returncode != 0:
+        print(f"Test {index} failed: {result.stderr.decode()}")
+    else:
+        print(f"Test {index} completed successfully")
 
 if __name__ == '__main__':
-    # Definir o número de processos a serem executados em paralelo
-    num_processes = 3
+    # Define the number of parallel processes
+    num_processes = 3  # Change this as needed
 
-    # Criar um pool de processos
+    # Create a pool of processes
     pool = Pool(processes=num_processes)
 
-    # Executar o teste em paralelo
+    # Execute the tests in parallel
     pool.map(run_test, range(num_processes))
+
+    # Close and join the pool to ensure clean exit
+    pool.close()
+    pool.join()
