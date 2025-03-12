@@ -1,5 +1,32 @@
-Automação desenvolvida para assegurar que LP de venda e atualização de planos de celular esteja com todas suas funcionalidades operacionais. 
-Foi utilizado JavaScript no framework Cypress e também desenhado um script em Python para ajudar a aplicação rodar paralelamente lendo um arquivo JSON de leads.
+# Cypress Parallel Test Runner
+**This project demonstrates running Cypress tests in parallel using Python's multiprocessing module.**
 
-Automation developed to ensure that the sales landing page and mobile plan update are fully operational with all their functionalities. 
-JavaScript was used in the Cypress framework, and a Python script was also designed to help the application run in parallel, reading a JSON file of leads.
+## Setup
+
+### 1. Clone the repository:
+
+git clone <your-repository-url>
+cd <your-project-directory>
+
+### 2. Install dependencies:
+
+npm install
+pip install multiprocessing
+
+## Running Tests
+
+### In Parallel
+
+Run the Python script to execute tests in parallel:
+
+python python/run_tests_parallel.py
+
+### Manually
+
+Run tests for a specific lead index:
+
+npm run cy:run --spec cypress/e2e/home.cy.js --env leadIndex=0
+
+### Test Data
+
+Test data is in test_data.json. Update it for different lead simulations.
